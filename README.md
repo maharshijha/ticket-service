@@ -27,7 +27,7 @@ curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART' 'htt
 ```
  - Get Avilable Seats with level prefrence  
  ```
- curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/availableSeats?levelId=1'
+curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART''http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/availableSeats?levelId=1'
  ```
  - Hold Seats without level prefrence  
  ```
