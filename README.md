@@ -26,24 +26,24 @@ mvn spring-boot:run
 curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/availableSeats'
 ```
  - Get Avilable Seats with level prefrence  
- ```
- curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/availableSeats?levelId=1'
- ```
+```
+curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/availableSeats?levelId=1'
+```
  - Hold Seats without level prefrence
- ```
- curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
   "numSeats": 10,
   "customerEmail": "test@test.com"
 }' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/holdSeats
- ```
+```
  - Hold Seats with Min Level Prefrence
- ```
- curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
   "numSeats": 10,
   "minLevel":1,
   "customerEmail": "test@test.com"
 }' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/holdSeats'
- ```
+```
  - Hold Seats with Max Level Prefrence
  ```
  curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
