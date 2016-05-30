@@ -16,3 +16,4 @@ overlays
 *.springBeans*
 .gradle
 .mvn
+.metadata
