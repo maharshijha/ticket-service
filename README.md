@@ -25,7 +25,7 @@ mvn spring-boot:run
 ```
 curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/availableSeats'
 ```
- - Get Avilable Seats with level prefrence
+ - Get Avilable Seats with level prefrence  
  ```
  curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/availableSeats?levelId=1'
  ```
