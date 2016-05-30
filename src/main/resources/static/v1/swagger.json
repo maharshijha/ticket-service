@@ -1,0 +1,20 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "A multi-version demo (version 1) of a RESTful service using Spring Boot, Jersey and Swagger.",
+    "version" : "v1",
+    "title" : "Multiversion Spring Boot + Jersey + Swagger Demo (Version 1)",
+    "termsOfService" : "http://www.github.com/kongchen/swagger-maven-plugin",
+    "contact" : {
+      "name" : "Orlando L Otero",
+      "url" : "http://tech.asimio.net",
+      "email" : "maharshi"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath" : "/api",
+  "schemes" : [ "http", "https" ]
+}
