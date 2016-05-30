@@ -2,9 +2,11 @@
 
 Implemented a simple ticket service that facilitates the discovery, temporary hold, and final reservation of seats within a high-demand performance venue.
 
+###### http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/
+
 # Installation
 ##### Cloud Service
-This service is also up and running on AWS Cloud.
+This service is up and running on AWS Cloud.
 ###### http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/
 
 ##### Commands
