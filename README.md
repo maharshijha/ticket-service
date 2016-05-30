@@ -45,34 +45,33 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 }' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/holdSeats'
 ```
  - Hold Seats with Max Level Prefrence
- ```
- curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
   "numSeats": 10,
   "maxLevel":2,
   "customerEmail": "test@test.com"
 }' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/holdSeats'
-
- ```
+```
  - Hold Seats with Min and Max Level Prefrence
- ```
- curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
+```
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
   "numSeats": 10,
 "minLevel":1,
   "maxLevel":2,
   "customerEmail": "test@test.com"
 }' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/holdSeats'
- ```
+```
  - Reserve Seats
- ```
- curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
+```
+curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
   "seatHoldId": 832489,
   "customerEmail": "test@test.com"
 }' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/reserveSeats'
- ```
+```
  - Reset Entire DB
- ```
- curl -X DELETE --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/{vanueId}/v1/resetService'
- ```
+```
+curl -X DELETE --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/{vanueId}/v1/resetService'
+```
 ##### Cloud Mongo URI
 ```
 https://mlab.com/databases/ticketservice
@@ -95,9 +94,9 @@ Designed the solution using the Spring Boot, Jersey, MongoDB and RabbitMQ.
   - Spring Boot: Spring Boot is used for creating stand-alone application.
   - Jersey: JAX-RS Reference Implementation.
   - MongoDB: Used Mongo to store Documents for total available seats, Holding the seats and Reserving held seats.
-  >This is the Cloud mongo cluster runnig at https://mlab.com/databases/ticketservice.
+>This is the Cloud mongo cluster runnig at https://mlab.com/databases/ticketservice.
   - RabbitMQ: This used to maintain life cycle of held message and achieve the fault tolerence.Queue will hold the message for 2 mins and then it will trigger the application to remove the held seats if those seats are not resevered yet.
-  >This is the MQ as a Cloud service running at https://jellyfish.rmq.cloudamqp.com/#/queues.
+>This is the MQ as a Cloud service running at https://jellyfish.rmq.cloudamqp.com/#/queues.
 # Fault Tolerence
 This System is very robust and caan handle the multu point failover.
  - Application Server Fault: Mongo will persist the data and MQ will hold the message for held ticket and wait for the system to be up.Once it will be up this will delete the held ticket and update the Total avaiable seats if seats are not booked and if it is then it will drop the message.
