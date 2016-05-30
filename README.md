@@ -1,7 +1,11 @@
 # Synopsis
 
 Implemented a simple ticket service that facilitates the discovery, temporary hold, and final reservation of seats within a high-demand performance venue.
+Introducing my quote:
 
+> Neque porro quisquam est qui 
+> dolorem ipsum quia dolor sit amet, 
+> consectetur, adipisci velit...
 # Installation
 ##### Cloud Service
 This service is also up and running on AWS Cloud.
