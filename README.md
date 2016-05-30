@@ -1,11 +1,7 @@
 # Synopsis
 
 Implemented a simple ticket service that facilitates the discovery, temporary hold, and final reservation of seats within a high-demand performance venue.
-Introducing my quote:
 
-> Neque porro quisquam est qui 
-> dolorem ipsum quia dolor sit amet, 
-> consectetur, adipisci velit...
 # Installation
 ##### Cloud Service
 This service is also up and running on AWS Cloud.
@@ -98,9 +94,9 @@ Designed the solution using the Spring Boot, Jersey, MongoDB and RabbitMQ.
   - Spring Boot: Spring Boot is used for creating stand-alone application.
   - Jersey: JAX-RS Reference Implementation.
   - MongoDB: Used Mongo to store Documents for total available seats, Holding the seats and Reserving held seats.
->This is the Cloud mongo cluster runnig at https://mlab.com/databases/ticketservice.
+> This is the Cloud mongo cluster runnig at https://mlab.com/databases/ticketservice.
   - RabbitMQ: This used to maintain life cycle of held message and achieve the fault tolerence.Queue will hold the message for 2 mins and then it will trigger the application to remove the held seats if those seats are not resevered yet.
->This is the MQ as a Cloud service running at https://jellyfish.rmq.cloudamqp.com/#/queues.  
+> This is the MQ as a Cloud service running at https://jellyfish.rmq.cloudamqp.com/#/queues.  
 
 # Fault Tolerence
 This System is very robust and caan handle the multu point failover.
