@@ -103,12 +103,14 @@ This System is very robust and caan handle the multu point failover.
  - Application Server Fault: Mongo will persist the data and MQ will hold the message for held ticket and wait for the system to be up.Once it will be up this will delete the held ticket and update the Total avaiable seats if seats are not booked and if it is then it will drop the message.
  - Mongo Fault: Used Mongo as a service running on the AWS EC2 and it will persist the message.
  - MQ Fault: Used MQ as a service running on EC2 and it is persistence System.
+
 # Scalibility
  - This system can be easly scale.System is based on Venue ID so for scalling this app to more Venue is just required to load venue details to mongo DB.
- - This is the distributed system so each server can be easly scalled based on the performance hit.
- 
+ - This is the distributed system so each server can be easly scalled based on the performance hit.  
+
 # Mongo Sample Documents
 Venue Details:  
+```
 {        
     "level_id": 1,  // Level on Each Venue   
     "vanueId": 0,  // Venue ID  
@@ -116,7 +118,8 @@ Venue Details:
     "price": "$100",// Price for that level  
     "totalAvailableSeats": 1150  // Total available seats for this level  
 }
-
+```
+```
 Ticket Details:
 {
     "_id": 344714, // Ticket Hold ID  
@@ -133,9 +136,10 @@ Ticket Details:
     "noOfSeats": 100,// Total No Of Seats requested  
     "status": "BOOKED"// HOLD or BOOKED  
 }  
-
+```
 # MQ Sample Document
 Ticket Details:  
+```
 {  
     "_id": 344714, // Ticket Hold ID  
     "bookinfRefNo": 743900, // Booking Ref No 
@@ -151,3 +155,4 @@ Ticket Details:
     "noOfSeats": 100,// Total No Of Seats requested  
     "status": "HOLD"// HOLD  
 }
+```
