@@ -25,18 +25,18 @@ mvn spring-boot:run
 ```
 curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/availableSeats'
 ```
- - Get Avilable Seats with level prefrence  
+ - Get Avilable Seats with level prefrence
  ```
-curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART''http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/availableSeats?levelId=1'
+ curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/availableSeats?levelId=1'
  ```
- - Hold Seats without level prefrence  
+ - Hold Seats without level prefrence
  ```
  curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
   "numSeats": 10,
   "customerEmail": "test@test.com"
 }' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/holdSeats
  ```
- - Hold Seats with Min Level Prefrence  
+ - Hold Seats with Min Level Prefrence
  ```
  curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
   "numSeats": 10,
@@ -44,7 +44,7 @@ curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART''http
   "customerEmail": "test@test.com"
 }' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/holdSeats'
  ```
- - Hold Seats with Max Level Prefrence  
+ - Hold Seats with Max Level Prefrence
  ```
  curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
   "numSeats": 10,
@@ -53,7 +53,7 @@ curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART''http
 }' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/holdSeats'
 
  ```
- - Hold Seats with Min and Max Level Prefrence  
+ - Hold Seats with Min and Max Level Prefrence
  ```
  curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
   "numSeats": 10,
@@ -62,26 +62,26 @@ curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART''http
   "customerEmail": "test@test.com"
 }' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/holdSeats'
  ```
- - Reserve Seats  
+ - Reserve Seats
  ```
  curl -X PUT --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'api-key: WALMART' -d '{
   "seatHoldId": 832489,
   "customerEmail": "test@test.com"
 }' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/reserveSeats'
  ```
- - Reset Entire DB  
+ - Reset Entire DB
  ```
  curl -X DELETE --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/{vanueId}/v1/resetService'
  ```
-##### Cloud Mongo URI  
+##### Cloud Mongo URI
 ```
 https://mlab.com/databases/ticketservice
 ```
-##### RabbitMQ Cloud URI  
+##### RabbitMQ Cloud URI
 ```
 https://jellyfish.rmq.cloudamqp.com/#/queues
 ```
-##### Assumptions  
+##### Assumptions
  - Java 8 is setup.
  - Maven is setup.
  - Maven has a access to Central Reposetry.
