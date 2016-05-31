@@ -105,7 +105,7 @@ https://jellyfish.rmq.cloudamqp.com/#/queues
  - Java 8 is setup.
  - Maven is setup.
  - Maven has a access to Central Reposetry.
- - Firewall should have access to below Cloud hosts for mongo and rabbit.
+ - Firewall should have access to below Cloud hosts for mongo and rabbit servers.
 ```
 s036789.mlab.com:36789  
 jellyfish.rmq.cloudamqp.com
@@ -127,7 +127,7 @@ Designed the solution using the Spring Boot, Jersey, MongoDB and RabbitMQ.
 
 > This is the Cloud mongo cluster runnig at https://mlab.com/databases/ticketservice.
 
-  - RabbitMQ: This used to maintain life cycle of held message and achieve the fault tolerence.Queue will hold the message for 2 mins and then it will trigger the application to remove the held seats if those seats are not resevered yet.
+  - RabbitMQ: This used to maintain life cycle of held message and achieve the system fault tolerence.Queue will hold the message for 2 mins and then it will trigger the application to remove the held seats if those seats are not resevered yet.
 
 > This is the MQ as a Cloud service running at https://jellyfish.rmq.cloudamqp.com/#/queues.  
 
