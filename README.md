@@ -77,7 +77,7 @@ curl -X DELETE --header 'Accept: application/json' --header 'api-key: WALMART' '
 ```
 ##### Service UI
 
-###### http://<HostName>:8080/#/Booking_Service_Resources
+###### http://localhost:8080/#/Booking_Service_Resources
 
 ##### AWS Cloud Service URLs
  - Total Available Seats  
