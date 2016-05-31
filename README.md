@@ -76,14 +76,6 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 curl -X DELETE --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/{vanueId}/v1/resetService'
 ```
-##### Cloud Mongo URI
-```
-https://mlab.com/databases/ticketservice
-```
-##### RabbitMQ Cloud URI
-```
-https://jellyfish.rmq.cloudamqp.com/#/queues
-```
 ##### AWS Cloud Service URLs
  - Total Available Seats  
  
@@ -100,7 +92,15 @@ https://jellyfish.rmq.cloudamqp.com/#/queues
  - Reset Service
  
 ###### http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/#!/Booking_Service_Resources/resetService  
- 
+
+##### Cloud Mongo URI
+```
+https://mlab.com/databases/ticketservice
+```
+##### RabbitMQ Cloud URI
+```
+https://jellyfish.rmq.cloudamqp.com/#/queues
+```
 ##### Assumptions
  - Java 8 is setup.
  - Maven is setup.
