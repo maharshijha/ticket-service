@@ -88,11 +88,17 @@ https://jellyfish.rmq.cloudamqp.com/#/queues
  - Total Available Seats  
  
 ###### http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/#!/Booking_Service_Resources/numSeatsAvailable  
+
  - Hold Seats
+ 
 ###### http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/#!/Booking_Service_Resources/findAndHoldSeats  
+
  - Reserve Seats
+ 
 ###### http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/#!/Booking_Service_Resources/reserveSeats  
+
  - Reset Service
+ 
 ###### http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/#!/Booking_Service_Resources/resetService  
  
 ##### Assumptions
