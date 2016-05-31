@@ -25,7 +25,6 @@ mvn spring-boot:run
 ##### Curl Commands
  - Get Avilable Seats without level prefrence  
 
-###### http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/#!/Booking_Service_Resources/numSeatsAvailable
 ```
 curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/availableSeats'
 ```
@@ -76,6 +75,10 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 curl -X DELETE --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/{vanueId}/v1/resetService'
 ```
+##### Service UI
+
+###### http://<HostName>:8080/#/Booking_Service_Resources
+
 ##### AWS Cloud Service URLs
  - Total Available Seats  
  
