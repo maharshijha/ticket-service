@@ -110,6 +110,15 @@ https://jellyfish.rmq.cloudamqp.com/#/queues
 s036789.mlab.com:36789  
 jellyfish.rmq.cloudamqp.com
 ```
+
+##### Service Monitoring URIs
+ - Service Health  
+ http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/health
+ - Dump  
+ http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/dump
+ - Memory Metrics  
+ http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/metrics
+
 # Design Overview
 Designed the solution using the Spring Boot, Jersey, MongoDB and RabbitMQ.
   - Spring Boot: Spring Boot is used for creating stand-alone application.
