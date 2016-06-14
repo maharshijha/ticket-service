@@ -2,10 +2,12 @@
 
 Implemented a simple ticket service that facilitates the discovery, temporary hold, and final reservation of seats within a high-demand performance venue.
 
+###### http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/#/Booking_Service_Resources
+
 # Installation
 ##### Cloud Service
-This service is also up and running on AWS Cloud.
-###### http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/
+This service is up and running on AWS Cloud.
+###### http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/#/Booking_Service_Resources
 
 ##### Commands
  - Build and Package
@@ -21,7 +23,8 @@ mvn test
 mvn spring-boot:run
 ```
 ##### Curl Commands
- - Get Avilable Seats without level prefrence
+ - Get Avilable Seats without level prefrence  
+
 ```
 curl -X GET --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/1/v1/availableSeats'
 ```
@@ -72,6 +75,27 @@ curl -X PUT --header 'Content-Type: application/json' --header 'Accept: applicat
 ```
 curl -X DELETE --header 'Accept: application/json' --header 'api-key: WALMART' 'http://<HostName>:8080/api/walmart/onlineServices/vanue/{vanueId}/v1/resetService'
 ```
+##### Service UI
+
+###### http://localhost:8080/#/Booking_Service_Resources
+
+##### AWS Cloud Service URLs
+ - Total Available Seats  
+ 
+###### http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/#!/Booking_Service_Resources/numSeatsAvailable  
+
+ - Hold Seats
+ 
+###### http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/#!/Booking_Service_Resources/findAndHoldSeats  
+
+ - Reserve Seats
+ 
+###### http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/#!/Booking_Service_Resources/reserveSeats  
+
+ - Reset Service
+ 
+###### http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/#!/Booking_Service_Resources/resetService  
+
 ##### Cloud Mongo URI
 ```
 https://mlab.com/databases/ticketservice
@@ -84,11 +108,20 @@ https://jellyfish.rmq.cloudamqp.com/#/queues
  - Java 8 is setup.
  - Maven is setup.
  - Maven has a access to Central Reposetry.
- - Firewall should have access to below Cloud hosts for mongo and rabbit.
+ - Firewall should have access to below Cloud hosts for mongo and rabbit servers.
 ```
 s036789.mlab.com:36789  
 jellyfish.rmq.cloudamqp.com
 ```
+
+##### Service Monitoring URIs
+ - Service Health  
+ http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/health
+ - Dump  
+ http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/dump
+ - Memory Metrics  
+ http://ec2-23-20-219-115.compute-1.amazonaws.com:8080/metrics
+
 # Design Overview
 Designed the solution using the Spring Boot, Jersey, MongoDB and RabbitMQ.
   - Spring Boot: Spring Boot is used for creating stand-alone application.
@@ -97,7 +130,7 @@ Designed the solution using the Spring Boot, Jersey, MongoDB and RabbitMQ.
 
 > This is the Cloud mongo cluster runnig at https://mlab.com/databases/ticketservice.
 
-  - RabbitMQ: This used to maintain life cycle of held message and achieve the fault tolerence.Queue will hold the message for 2 mins and then it will trigger the application to remove the held seats if those seats are not resevered yet.
+  - RabbitMQ: This used to maintain life cycle of held message and achieve the system fault tolerence.Queue will hold the message for 2 mins and then it will trigger the application to remove the held seats if those seats are not resevered yet.
 
 > This is the MQ as a Cloud service running at https://jellyfish.rmq.cloudamqp.com/#/queues.  
 
