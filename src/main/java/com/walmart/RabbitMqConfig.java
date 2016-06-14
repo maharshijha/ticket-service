@@ -15,6 +15,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
+import com.walmart.ticketservice.dao.HoldSeatsDao;
+import com.walmart.ticketservice.dao.impl.HoldSeatsDaoImpl;
+import com.walmart.ticketservice.dao.impl.HoldSeatsDaoImpl2;
 import com.walmart.ticketservice.dao.impl.ResetHoldSeatsDaoImpl;
 
 /**
@@ -103,6 +106,15 @@ public class RabbitMqConfig {
 				.setMessageListener(new ResetHoldSeatsDaoImpl(templet));
 		listenerContainer.setAcknowledgeMode(AcknowledgeMode.AUTO);
 		return listenerContainer;
+	}
+	
+	@Bean
+	public HoldSeatsDao holdseatdao(){
+		System.out.println("Here");
+//		return new HoldSeatsDaoImpl();
+
+		return new HoldSeatsDaoImpl2();
+		
 	}
 
 }

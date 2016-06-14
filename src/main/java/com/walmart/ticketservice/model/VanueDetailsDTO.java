@@ -1,5 +1,7 @@
 package com.walmart.ticketservice.model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,12 +16,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class VanueDetailsDTO {
 
 	public VanueDetailsDTO(int levelId, String levelName, String price,
-			int totalAvailableSeats, int vanueId) {
+			int totalAvailableSeats, int vanueId,List SeatIds,int row,int column) {
 		super();
 		this.levelId = levelId;
 		this.levelName = levelName;
 		this.price = price;
 		this.totalAvailableSeats = totalAvailableSeats;
+		this.seatIds=SeatIds;
+		this.row=row;
+		this.column=column;
 	}
 
 	@Id
@@ -27,9 +32,13 @@ public class VanueDetailsDTO {
 	@Indexed
 	private int vanueId;
 
+	private int row;
+	private int column;
+
 	private String levelName;
 	private String price;
 	private int totalAvailableSeats;
+	private List seatIds;
 
 	public int getVanueId() {
 		return vanueId;
@@ -69,6 +78,30 @@ public class VanueDetailsDTO {
 
 	public void setTotalAvailableSeats(int totalAvailableSeats) {
 		this.totalAvailableSeats = totalAvailableSeats;
+	}
+
+	public List getSeatIds() {
+		return seatIds;
+	}
+
+	public void setSeatIds(List seatIds) {
+		this.seatIds = seatIds;
+	}
+
+	public int getColumn() {
+		return column;
+	}
+
+	public void setColumn(int column) {
+		this.column = column;
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public void setRow(int row) {
+		this.row = row;
 	}
 
 }

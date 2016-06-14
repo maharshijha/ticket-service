@@ -84,7 +84,7 @@ public class TicketServiceResource {
 	@ApiImplicitParams({
 	    @ApiImplicitParam(name = HEADERNAME, value = HEADERVALUE, required = true, dataType = "string", paramType = "header", defaultValue=HEADERDEFAULTVALUE)	    
 	  })
-	public Response numSeatsAvailable(@ApiParam(value = "VanueID for future expansion,Currenntly default is 1",defaultValue="1") @Valid @NotNull(message=VANUE_NOT_NULL) @PathParam("vanueId") @Min(value=1,message=VANUE_NOT_VALID)Integer vanueId,@ApiParam(value = "Level ID for find the number of seats by seating level")@Valid @Min(value=1,message=LEVEL_NOT_VALID)@QueryParam("levelId") Integer levelId) {
+	public Response numSeatsAvailable(@ApiParam(value = "VanueID for future expansion,Currenntly this is disabled",defaultValue="1") @Valid @NotNull(message=VANUE_NOT_NULL) @PathParam("vanueId") @Min(value=1,message=VANUE_NOT_VALID)Integer vanueId,@ApiParam(value = "Level ID for find the number of seats by seating level")@Valid @Min(value=1,message=LEVEL_NOT_VALID)@QueryParam("levelId") Integer levelId) {
 
 		SeatsAvailableResponse seatsAvailableResponse=new SeatsAvailableResponse(service.numSeatsAvailable(levelId));
 				
@@ -112,7 +112,7 @@ public class TicketServiceResource {
 	@ApiImplicitParams({
 	    @ApiImplicitParam(name = HEADERNAME, value = HEADERVALUE, required = true, dataType = "string", paramType = "header", defaultValue=HEADERDEFAULTVALUE)	    
 	  })
-	public Response findAndHoldSeats(@Valid FindAndHoldSeatsRequest request,@ApiParam(value = "VanueID for future expansion,Currenntly default is 1",defaultValue="1")@Valid @NotNull(message=VANUE_NOT_NULL) @PathParam("vanueId") @Min(value=1,message=VANUE_NOT_VALID) String vanueId) {
+	public Response findAndHoldSeats(@Valid FindAndHoldSeatsRequest request,@ApiParam(value = "VanueID for future expansion,Currenntly this is disabled",defaultValue="1")@Valid @NotNull(message=VANUE_NOT_NULL) @PathParam("vanueId") @Min(value=1,message=VANUE_NOT_VALID) String vanueId) {
 	
 		HoldSeatDTO dto=service.findAndHoldSeats(request.getNumSeats(), request.getMinLevel(), request.getMaxLevel(), request.getCustomerEmail());
 		return Response.status(HttpURLConnection.HTTP_CREATED).entity(dto).build();
@@ -139,7 +139,7 @@ public class TicketServiceResource {
 	@ApiImplicitParams({
 	    @ApiImplicitParam(name = HEADERNAME, value = HEADERVALUE, required = true, dataType = "string", paramType = "header", defaultValue=HEADERDEFAULTVALUE)	    
 	  })
-	public Response reserveSeats(@Valid ReserveSeatsRequest request,@ApiParam(value = "VanueID for future expansion,Currenntly default is 1",defaultValue="1")@Valid @NotNull(message=VANUE_NOT_NULL) @PathParam("vanueId") @Min(value=1,message=VANUE_NOT_VALID) String vanueId){
+	public Response reserveSeats(@Valid ReserveSeatsRequest request,@ApiParam(value = "VanueID for future expansion,Currenntly this is disabled",defaultValue="1")@Valid @NotNull(message=VANUE_NOT_NULL) @PathParam("vanueId") @Min(value=1,message=VANUE_NOT_VALID) String vanueId){
 	
 		ReserveSeatsResponse reserveSeatsResponse=new ReserveSeatsResponse(service.reserveSeats(request.getSeatHoldId(), request.getCustomerEmail()));
 		return Response.status(HttpURLConnection.HTTP_OK).entity(reserveSeatsResponse).build();

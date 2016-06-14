@@ -7,32 +7,36 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
+import org.springframework.amqp.rabbit.connection.Connection;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import org.springframework.amqp.rabbit.connection.Connection;
 import com.rabbitmq.client.Channel;
 import com.walmart.RabbitMqConfig;
 import com.walmart.ticketservice.dao.HoldSeatsDao;
 import com.walmart.ticketservice.exceptions.NotFoundException;
 import com.walmart.ticketservice.model.HoldSeatDTO;
-import com.walmart.ticketservice.model.HoldSeatDTO.SeatStatus;
 import com.walmart.ticketservice.model.Seat;
 import com.walmart.ticketservice.model.VanueDetailsDTO;
+import com.walmart.ticketservice.model.HoldSeatDTO.SeatStatus;
 
-/**
- * This is the DAO class which will help to add Hold object on mongo and also
- * send an Message to Rabbit MQ for Expiring message after 2 mins.
- * 
- * @author Maharshi
- *
- */
+public class HoldSeatsDaoImpl2 implements HoldSeatsDao{
 
-//@Named
-public class HoldSeatsDaoImpl implements HoldSeatsDao {
+//	@Override
+//	public HoldSeatDTO holdSeats(int requestedSeats, Integer minLevel,
+//			Integer maxLevel, int vanueID,
+//			List<VanueDetailsDTO> vanueLevelDetails, String customersEmail) {
+////		HoldSeatDTO dto=new HoldSeatDTO(111, 1111, "HoldSeat2", null, 1, 100000, "Algo2");
+//		
+//		
+//		
+//		
+//		return dto;
+//	}
+	
+
 
 	@Inject
 	MongoTemplate mongoTemplet;
@@ -92,8 +96,8 @@ public class HoldSeatsDaoImpl implements HoldSeatsDao {
 		 */
 		while (VanueDetailsDTOList.hasNext() && numOfSeats > 0) {
 			VanueDetailsDTO = VanueDetailsDTOList.next();
-
-			if (VanueDetailsDTO.getTotalAvailableSeats() > 0) {
+			if(getConsecutiveSeats(VanueDetailsDTO.getSeatIds(), VanueDetailsDTO.getColumn(),, noOfSeats))
+			if (VanueDetailsDTO.getTotalAvailableSeats() > 0 && VanueDetailsDTO.getSeatIds().size() > requestedSeats) {
 				if (null != minLevel && null != maxLevel
 						&& VanueDetailsDTO.getLevelId() >= minLevel
 						&& VanueDetailsDTO.getLevelId() <= maxLevel) {
@@ -189,5 +193,32 @@ public class HoldSeatsDaoImpl implements HoldSeatsDao {
 
 		}
 	}
+
+	
+	
+	public List getConsecutiveSeats(List availableSeats,int row,int column,int noOfSeats){
+		
+		List consSeats=new ArrayList();
+		for(int i=0;i<availableSeats.size();i++){
+			consSeats.clear();
+			for(int j=0,k=i;j<noOfSeats;j++,k++){
+				if(availableSeats.contains(availableSeats.get(i).toString().charAt(0)+(Integer.parseInt(availableSeats.get(i).toString().substring(1))+j))){
+					consSeats.add(availableSeats.get(i));
+				}
+				else{
+					break;
+				}
+					
+			}
+		}
+		
+		if(consSeats.size() == noOfSeats){
+			return consSeats;
+		}
+		else{
+			return null;
+		}
+	}
+
 
 }

@@ -1,5 +1,8 @@
 package com.walmart;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.boot.CommandLineRunner;
@@ -48,15 +51,33 @@ public class TicketserviceApplication extends SpringBootServletInitializer
 	@Override
 	public void run(String... args) throws Exception {
 
+		List seatLevel1=getSeatIds(25,50);
+		List seatLevel2=getSeatIds(20,100);
+		List seatLevel3=getSeatIds(15,100);
+		List seatLevel4=getSeatIds(15,100);
+
+	
+		
 		vanueRepo.deleteAll();
 
-		vanueRepo.save(new VanueDetailsDTO(1, "Orchestra", "$100", 25 * 50, 1));
-		vanueRepo.save(new VanueDetailsDTO(2, "Main", "$75", 20 * 100, 1));
-		vanueRepo.save(new VanueDetailsDTO(3, "Balcony 1", "$50", 15 * 100, 1));
-		vanueRepo.save(new VanueDetailsDTO(4, "Balcony 2", "$40", 15 * 100, 1));
+		vanueRepo.save(new VanueDetailsDTO(1, "Orchestra", "$100", 25 * 50, 1,seatLevel1,25,50));
+		vanueRepo.save(new VanueDetailsDTO(2, "Main", "$75", 20 * 100, 1,seatLevel2,20,100));
+		vanueRepo.save(new VanueDetailsDTO(3, "Balcony 1", "$50", 15 * 100, 1,seatLevel3,15,100));
+		vanueRepo.save(new VanueDetailsDTO(4, "Balcony 2", "$40", 15 * 100, 1,seatLevel4,15,100));
 
 	}
 
+	private List getSeatIds(int row,int column){
+		List seatIds=new ArrayList();
+		for(int i=0;i<row;i++){
+			for(int j=1;j<=column;j++){
+				seatIds.add((char) ('A' + i)+""+j);
+			}
+		}
+		return seatIds;
+		
+	}
+	
 	@Override
 	protected SpringApplicationBuilder configure(
 			SpringApplicationBuilder builder) {
